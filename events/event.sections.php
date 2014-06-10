@@ -105,7 +105,10 @@
 				return $this->buildOutput( $sections_permissions );
 			}
 			$this->sections = $sections_permissions;
-
+            if(isset($sections_input['__delete'])){
+				$entryManager = new EntryManager($this->_Parent);
+                $entryManager->delete($sections_input['__delete']);
+			}
 
 			/* 3. Delete Entries */
 			$sections_delete = $this->sectionsDeleteEntries( $sections_permissions );
